@@ -1,0 +1,42 @@
+# ---- Personal notes: not part of the shareable kit ----
+next.md
+techstack.md
+build-plan.md
+personal-agent-plan.md
+# Put any other private notes here and they stay out automatically
+private/
+notes/
+
+# ---- Secrets (none are in the repo today; this keeps it that way) ----
+.env
+.env.*
+!.env.example
+*token*
+!setup/05-save-telegram-token.sh
+credit-baseline
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.p12
+
+# ---- Real configs (only the .example template is shared) ----
+openclaw-config.json5
+*.local.json5
+*.local.json
+
+# ---- Backups and exports from the server ----
+*.bak
+*.tar.gz
+*.dump
+*.sql
+
+# ---- Claude Code local state ----
+.claude/settings.local.json
+CLAUDE.local.md
+
+# ---- OS / editor clutter ----
+.DS_Store
+.vscode/
+.idea/
+*.swp

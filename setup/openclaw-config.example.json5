@@ -1,0 +1,35 @@
+// Template used by 03-apply-config.sh, which swaps in your real Telegram user ID.
+// Don't add secrets here. The bot token lives in its own file (05-save-telegram-token.sh).
+{
+  gateway: {
+    mode: "local",
+    bind: "loopback", // Reachable only from the server itself.
+    port: 18789,
+  },
+
+  channels: {
+    telegram: {
+      enabled: true,
+      // Long polling (the default): no webhook and no inbound port.
+      tokenFile: "/home/agent/.openclaw/telegram-bot-token",
+      dmPolicy: "allowlist",
+      allowFrom: ["123456789"], // Numeric Telegram user ID, not a username or phone number.
+      groupPolicy: "disabled",
+    },
+  },
+
+  agents: {
+    defaults: {
+      model: { primary: "openai/gpt-6.1-terra" },
+      thinkingDefault: "low",
+      // No skills until one has been reviewed and added to this list.
+      skills: [],
+    },
+  },
+
+  tools: {
+    fs: { workspaceOnly: true },
+    // "cron" stays allowed because reminders are likely to need it.
+    deny: ["gateway", "sessions_spawn", "sessions_send"],
+  },
+}
